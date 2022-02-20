@@ -1,12 +1,19 @@
 import React from "react";
 import { Task } from "./Types";
 
-function TodoItem({ id, title }: Task) {
-  return (
-    <span>
-      {id} : {title}
-    </span>
-  );
+function TodoItem({ id, title, isActive }: Task) {
+  if (isActive) {
+    return (
+      <span>
+        {id} : {title} : "active"
+      </span>
+    );
+  } else {
+    return (
+      <span>
+        {id} : {title} : "not active"
+      </span>
+    );
+  }
 }
-
 export default TodoItem;

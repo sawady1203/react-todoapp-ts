@@ -12,7 +12,15 @@ function TodoList({ tasks, updateTasks }: Props) {
     updateTasks(tasks.filter((task) => task.id !== deletetask.id));
   };
 
-  console.log(tasks);
+  const handleCheck = (doneTask: Task) => {
+    updateTasks(
+      tasks.map((task) =>
+        task.id === doneTask.id ? { ...task, isActive: !task.isActive } : task
+      )
+    );
+    console.info(tasks);
+  };
+
   return (
     <div>
       <h2>TodoList</h2>
@@ -20,6 +28,7 @@ function TodoList({ tasks, updateTasks }: Props) {
         {tasks.map((task, key) => {
           return (
             <li key={key}>
+              <input type="checkbox" onClick={() => handleCheck(task)} />
               <TodoItem {...task} />{" "}
               <button
                 onClick={() => {
