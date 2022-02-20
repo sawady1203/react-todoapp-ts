@@ -13,7 +13,7 @@ function TodoList({ tasks }: Props) {
       <h2>TodoList</h2>
       <ul>
         {tasks.map((task, key) => {
-          console.log(task);
+          //   console.log(task);
           return (
             <li key={key}>
               <TodoItem {...task} />;
