@@ -8,7 +8,6 @@ type Props = {
 };
 
 function TodoInput({ tasks, updateTasks }: Props) {
-  console.info(tasks);
   const [title, setTitle] = useState("");
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {

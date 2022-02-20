@@ -4,19 +4,30 @@ import { Task } from "./Types";
 
 type Props = {
   tasks: Task[];
+  updateTasks: React.Dispatch<React.SetStateAction<Task[]>>;
 };
 
-function TodoList({ tasks }: Props) {
+function TodoList({ tasks, updateTasks }: Props) {
+  const handleDelete = (deletetask: Task) => {
+    updateTasks(tasks.filter((task) => task.id !== deletetask.id));
+  };
+
   console.log(tasks);
   return (
     <div>
       <h2>TodoList</h2>
       <ul>
         {tasks.map((task, key) => {
-          //   console.log(task);
           return (
             <li key={key}>
-              <TodoItem {...task} />;
+              <TodoItem {...task} />{" "}
+              <button
+                onClick={() => {
+                  handleDelete(task);
+                }}
+              >
+                削除
+              </button>
             </li>
           );
         })}

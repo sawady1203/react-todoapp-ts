@@ -9,7 +9,7 @@ function TodoApp() {
     <div>
       <h1>TodoApp</h1>
       <TodoInput tasks={tasks} updateTasks={setTasks} />
-      <TodoList tasks={tasks} />
+      <TodoList tasks={tasks} updateTasks={setTasks} />
     </div>
   );
 }
