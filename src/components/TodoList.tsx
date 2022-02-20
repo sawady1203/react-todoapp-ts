@@ -30,16 +30,20 @@ function TodoList({ tasks, updateTasks }: Props) {
     );
   };
 
-  const handleEditTitle = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleEditTitle = (
+    e: React.ChangeEvent<HTMLInputElement>,
+    task: Task
+  ) => {
     e.isDefaultPrevented();
     setTitle(e.target.value);
+    updateTasks(
+      tasks.map((t) => (t.id === task.id ? { ...t, title: _title } : t))
+    );
   };
 
   const handleSaveTitle = (task: Task) => {
     updateTasks(
-      tasks.map((t) =>
-        t.id === task.id ? { ...t, title: _title, editable: !t.editable } : t
-      )
+      tasks.map((t) => (t.id === task.id ? { ...t, editable: !t.editable } : t))
     );
   };
 
@@ -75,8 +79,7 @@ function TodoList({ tasks, updateTasks }: Props) {
                 <input
                   type="text"
                   placeholder={task.title}
-                  value={_title}
-                  onChange={handleEditTitle}
+                  onChange={(e) => handleEditTitle(e, task)}
                 />
                 <button type="submit" onClick={() => handleSaveTitle(task)}>
                   変更
