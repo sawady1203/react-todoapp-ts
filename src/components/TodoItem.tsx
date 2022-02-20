@@ -1,7 +1,7 @@
 import React from "react";
 import { Task } from "./Types";
 
-function TodoItem({ id, title, isActive }: Task) {
+function TodoItem({ id, title, isActive, editable }: Task) {
   if (isActive) {
     return (
       <span>

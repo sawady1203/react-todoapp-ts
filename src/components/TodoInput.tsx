@@ -20,6 +20,7 @@ function TodoInput({ tasks, updateTasks }: Props) {
       id: tasks.length + 1,
       title: title,
       isActive: false,
+      editable: false,
     };
     // tasksに追加する
     updateTasks([...tasks, newTask]);
