@@ -8,7 +8,8 @@ type Props = {
 };
 
 function TodoInput({ tasks, updateTasks }: Props) {
-  const [title, setTitle] = useState("");
+  const [title, setTitle] = useState<string>("");
+  const [count, setCount] = useState<number>(1);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setTitle(e.target.value);
@@ -16,8 +17,9 @@ function TodoInput({ tasks, updateTasks }: Props) {
 
   const handleTaskAppend = () => {
     // 新しいtaskの定義
+    setCount(count + 1);
     const newTask: Task = {
-      id: tasks.length + 1,
+      id: count,
       title: title,
       isActive: false,
       editable: false,
