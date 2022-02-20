@@ -34,7 +34,6 @@ function TodoList({ tasks, updateTasks }: Props) {
     e: React.ChangeEvent<HTMLInputElement>,
     task: Task
   ) => {
-    e.isDefaultPrevented();
     setTitle(e.target.value);
     updateTasks(
       tasks.map((t) => (t.id === task.id ? { ...t, title: _title } : t))
@@ -79,6 +78,7 @@ function TodoList({ tasks, updateTasks }: Props) {
                 <input
                   type="text"
                   placeholder={task.title}
+                  defaultValue={task.title}
                   onChange={(e) => handleEditTitle(e, task)}
                 />
                 <button type="submit" onClick={() => handleSaveTitle(task)}>
