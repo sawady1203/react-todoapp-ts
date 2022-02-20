@@ -2,24 +2,12 @@ import React from "react";
 import TodoItem from "./TodoItem";
 import { Task } from "./Types";
 
-function TodoList() {
-  const tasks: Task[] = [
-    {
-      id: 0,
-      title: "test",
-      isActive: false,
-    },
-    {
-      id: 0,
-      title: "test",
-      isActive: false,
-    },
-    {
-      id: 0,
-      title: "test",
-      isActive: false,
-    },
-  ];
+type Props = {
+  tasks: Task[];
+};
+
+function TodoList({ tasks }: Props) {
+  console.log(tasks);
   return (
     <div>
       <h2>TodoList</h2>
